@@ -19,6 +19,7 @@ int front = 0;
 int rear = -1;
 int queue_size = 0;
 
+// 큐는 뒤(rear)로 넣고(enqueue) 앞으로 빼는 자료구조
 void enqueue(int num)
 {
 	rear = (rear + 1)%Q_CAP;
@@ -28,6 +29,7 @@ void enqueue(int num)
 	return;
 }
 
+// 큐는 뒤로 넣고 앞(front)으로 빼는(dequeue) 자료구조
 int dequeue(void)
 {
 	int output = array_queue[front];
