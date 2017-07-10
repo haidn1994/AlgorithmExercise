@@ -40,7 +40,7 @@ using namespace std;
 	O(n*3) = O(n)이 된다. 따라서 10^6정도의 연산은 가뿐하게 수행한다.
  */
 int d[1000001];
-
+/*
 int go_bottom_up(int n)
 {
 	if(n == 1) return 0;		// 입력이 1로 들어왔을 때가 바로 기저 사례이다.
@@ -59,14 +59,14 @@ int go_bottom_up(int n)
 	// 전부 구해서 넘겨준다.
 	return d[n];
 }
-
+*/
 int go_top_down(int n)
 {
 	int i;
 	// 인덱스는 숫자를 나타낸다는 점 명심할것!
 	d[1] = 0;
 	for(i = 2; i <= n; i++){
-		d[i] = d[i] + 1;
+		d[i] = d[i-1] + 1;
 		if(i%2 == 0 && d[i] > d[i/2] + 1){
 			d[i] = d[i/2] + 1;
 		}
@@ -84,8 +84,8 @@ int main(void)
 	ios_base::sync_with_stdio(false);
 	cin >> input;
 
-	result = go(input);
-	cout << result;
+	result = go_top_down(input);
+	cout << result << '\n';
 	
 	return 0;
 }
